@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FC Sużym</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#ffffff;
+    color:#111;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:#c40000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    padding:20px;
+    z-index:999;
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:1rem;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ffb3b3;
+}
+
+/* HERO */
+
+header{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(196,0,0,0.85), rgba(255,255,255,0.9));
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:120px 10%;
+}
+
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:80px;
+    flex-wrap:wrap;
+}
+
+.hero img{
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    box-shadow:0 0 40px rgba(196,0,0,0.5);
+    border:8px solid white;
+    animation:float 3s ease-in-out infinite;
+    object-fit:cover;
+}
+
+.hero-text h1{
+    font-size:6rem;
+    color:white;
+    text-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+.hero-text p{
+    font-size:2rem;
+    margin-top:15px;
+    color:#fff;
+    font-weight:bold;
+}
+
+/* SEKCJE */
+
+section{
+    padding:100px 10%;
+}
+
+.title{
+    font-size:3rem;
+    color:#c40000;
+    margin-bottom:50px;
+    text-transform:uppercase;
+    position:relative;
+}
+
+.title::after{
+    content:"";
+    width:120px;
+    height:5px;
+    background:#c40000;
+    position:absolute;
+    left:0;
+    bottom:-15px;
+}
+
+/* INFO */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border:3px solid #c40000;
+    border-radius:25px;
+    padding:40px;
+    transition:0.4s;
+    box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    background:#c40000;
+    color:white;
+}
+
+.card h3{
+    margin-bottom:15px;
+    font-size:1.6rem;
+}
+
+/* HISTORIA */
+
+.history{
+    line-height:2;
+    font-size:1.15rem;
+}
+
+.history strong{
+    color:#c40000;
+}
+
+/* BARWY */
+
+.colors{
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.color-box{
+    width:250px;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+.color{
+    height:180px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2rem;
+    font-weight:bold;
+}
+
+.red{
+    background:#c40000;
+    color:white;
+}
+
+.white{
+    background:white;
+    border:4px solid #c40000;
+    color:#c40000;
+}
+
+.mint{
+    background:#98ffcc;
+    color:#111;
+}
+
+.color-desc{
+    padding:20px;
+    background:white;
+    line-height:1.7;
+}
+
+/* GALERIA */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.gallery-item{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    transition:0.4s;
+}
+
+.gallery-item:hover{
+    transform:translateY(-10px);
+}
+
+.gallery-item img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+}
+
+.gallery-desc{
+    padding:25px;
+}
+
+.gallery-desc h3{
+    color:#c40000;
+    margin-bottom:10px;
+}
+
+/* HYMN */
+
+.hymn-box{
+    background:#c40000;
+    color:white;
+    border-radius:30px;
+    padding:60px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.hymn-box h3{
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+.hymn-box p{
+    font-size:1.2rem;
+    margin-bottom:30px;
+    line-height:1.8;
+}
+
+/* KONTAKT */
+
+.contact{
+    background:#c40000;
+    color:white;
+    border-radius:30px;
+    text-align:center;
+    padding:80px 40px;
+}
+
+.contact h2{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.contact p{
+    font-size:1.3rem;
+    margin-bottom:30px;
+}
+
+.contact a{
+    background:white;
+    color:#c40000;
+    padding:18px 40px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.contact a:hover{
+    background:#111;
+    color:white;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+/* ANIMACJA */
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    nav{
+        gap:15px;
+    }
+
+    .hero-text h1{
+        font-size:4rem;
+    }
+
+    .hero-text p{
+        font-size:1.4rem;
+    }
+
+    .hero img{
+        width:260px;
+        height:260px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+    <a href="#home">Start</a>
+    <a href="#info">Informacje</a>
+    <a href="#historia">Historia</a>
+    <a href="#barwy">Barwy</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#hymn">Hymn</a>
+    <a href="#kontakt">Kontakt</a>
+</nav>
+
+<!-- HERO -->
+
+<header id="home">
+
+<div class="hero">
+
+<img src="https://scontent.fpoz6-1.fna.fbcdn.net/v/t1.15752-9/673795961_1445419113437342_805314876531764181_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=YEbK-KX2Q3IQ7kNvwEVlvN3&_nc_oc=AdrCvMvhELTrRfhArbpLhSs_Mif9DRXi6OrbUsPjcoQ4yWkoJAttNoJNMgA7J_TsLRA&_nc_zt=23&_nc_ht=scontent.fpoz6-1.fna&_nc_ss=7b2a8&oh=03_Q7cD5QHgr54UlZZcf1OpVSZm6cnOnO0PdA5S3NzO1OkNyg7kOQ&oe=6A3D1271" alt="FC Sużym Logo">
+
+<div class="hero-text">
+<h1>FC SUŻYM</h1>
+<p>Łączy nas sużym</p>
+</div>
+
+</div>
+
+</header>
+
+<!-- INFO -->
+
+<section id="info">
+
+<h2 class="title">Informacje o klubie</h2>
+
+<div class="info-grid">
+
+<div class="card">
+<h3>Zarejestrowani zawodnicy</h3>
+<p>20 aktywnych zawodników reprezentujących FC Sużym.</p>
+</div>
+
+<div class="card">
+<h3>Adres stadionu</h3>
+<p>Długa 1, 80-209<br>Tuchom</p>
+</div>
+
+<div class="card">
+<h3>Liga</h3>
+<p>JOGA 6 LEAGUE (J6L)</p>
+</div>
+
+<div class="card">
+<h3>Data założenia</h3>
+<p>Grudzień 2025</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- HISTORIA -->
+
+<section id="historia">
+
+<h2 class="title">Historia klubu</h2>
+
+<div class="history">
+
+<p>
+FC Sużym to klub założony z pasji do piłki nożnej,
+przyjaźni oraz chęci udowodnienia swojej wartości na boisku.
+Historia drużyny rozpoczęła się od grupki znajomych znanych
+pod nazwą „Sużym" — skrótu od „Serwer Użytkownika Mietapog".
+Ekipa regularnie spędzała razem czas, grając w piłkę i budując własną społeczność.
+</p>
+
+<br>
+
+<p>
+Początkowo członkowie Sużym chcieli rozegrać sparingowy mecz
+z drużyną FC Synki. Pomysł wydawał się prosty,
+jednak założyciel Synków nie wyraził zgody na organizację spotkania.
+To właśnie wtedy narodziła się idea stworzenia własnego zespołu,
+który mógłby rywalizować na równi z innymi drużynami.
+</p>
+
+<br>
+
+<p>
+W kluczowym momencie do działania wkroczyli menadżer Mietapog
+oraz trener Michał Kowalewski.
+Wspólnie postanowili założyć nowy klub pod nazwą FC Sużym.
+</p>
+
+<br>
+
+<p>
+Celem drużyny było nie tylko stworzenie własnej piłkarskiej marki,
+ale również zapisanie się do tych samych rozgrywek,
+w których występowało FC Synki —
+czyli do <strong>Gdyńskiej Ligi Orlikowej (GLO)</strong>.
+</p>
+
+</div>
+
+</section>
+
+<!-- BARWY -->
+
+<section id="barwy">
+
+<h2 class="title">Barwy klubowe</h2>
+
+<div class="colors">
+
+<div class="color-box">
+<div class="color red">
+CZERWONY
+</div>
+
+<div class="color-desc">
+Symbolizuje pasję, walkę i charakter FC Sużym.
+</div>
+</div>
+
+<div class="color-box">
+<div class="color white">
+BIAŁY
+</div>
+
+<div class="color-desc">
+Reprezentuje jedność, honor i szacunek drużyny.
+</div>
+</div>
+
+<div class="color-box">
+<div class="color mint">
+MIĘTOWY
+</div>
+
+<div class="color-desc">
+Symbolizuje Miętę — jedyną rzecz którą Mietapog uważa za POG.
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- GALERIA -->
+
+<section id="galeria">
+
+<h2 class="title">Galeria</h2>
+
+<div class="gallery">
+
+<div class="gallery-item">
+<img src="https://scontent.fpoz6-1.fna.fbcdn.net/v/t1.15752-9/696374994_2210366602863073_3568826994217880465_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_ohc=LaKNfeUONpAQ7kNvwF_KxSf&_nc_oc=Adp1WRxQx8WhSd_7EflGZ77r7eYoNMmEFZrIJ_ilOmV_UseaZdNO3VvnRy7PNttZnIg&_nc_zt=23&_nc_ht=scontent.fpoz6-1.fna&_nc_ss=7b2a8&oh=03_Q7cD5QGR2fAXU2jMD8RkXW14SbAsqq3xukSErXPzoxG0HtsEhg&oe=6A3D2244">
+
+<div class="gallery-desc">
+<h3>Chwile FC Sużym po zwycięstwie</h3>
+<p>Dumna drużyna po legendarnym meczu z FC Synkami.</p>
+</div>
+</div>
+
+<div class="gallery-item">
+<img src="https://scontent.fpoz6-1.fna.fbcdn.net/v/t1.15752-9/704635957_1345450167447689_6522139438410120196_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=fKai9WDBc4sQ7kNvwEXcNKc&_nc_oc=AdorAR9Lz_zcGeqEouqMQHk40QUmYHD_J8ZHIIzt1EintcQiOMDM16A1Qfd0ILoa3mY&_nc_zt=23&_nc_ht=scontent.fpoz6-1.fna&_nc_ss=7b2a8&oh=03_Q7cD5QGAOrHl2nKIVCZA8Znf_WYNK1n25l-lmrdg_L8m5-gx8Q&oe=6A3D2CB6">
+
+<div class="gallery-desc">
+<h3>Ekipa FC Sużym</h3>
+<p>Drużyna gotowa na kolejne wielkie mecze.</p>
+</div>
+</div>
+
+<div class="gallery-item">
+<img src="https://scontent.fpoz6-1.fna.fbcdn.net/v/t1.15752-9/637209375_1292511306134262_1980779060256199186_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=7yI0YqyColwQ7kNvwHA8ZUg&_nc_oc=AdocCnwm_IMzyDOAs5SzRDaWcih7CWXU59afd64xFlynimt4PXgsbwiQBCFw77Wn0Xw&_nc_zt=23&_nc_ht=scontent.fpoz6-1.fna&_nc_ss=7b2a8&oh=03_Q7cD5QGoaupUfGlZSD9rJN4i50J7z7Mk_c8_4BcSToW642O0NQ&oe=6A3D1485">
+
+<div class="gallery-desc">
+<h3>Przystanek im. Mietapoga</h3>
+<p>Legendarne miejsce związane z historią FC Sużym.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- HYMN -->
+
+<section id="hymn">
+
+<h2 class="title">Hymn klubu</h2>
+
+<div class="hymn-box">
+
+<h3>Sużym BUM-BUM</h3>
+
+<p>
+Oficjalny hymn FC Sużym.
+Muzyka która motywuje drużynę przed każdym meczem
+i buduje atmosferę całego klubu.
+</p>
+
+<iframe 
+width="100%" 
+height="166" 
+scrolling="no" 
+frameborder="no" 
+allow="autoplay" 
+src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/lil-gosh-55179768/oficjalny-hymn-su-ym&color=%23c40000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+</iframe>
+
+</div>
+
+</section>
+
+<!-- KONTAKT -->
+
+<section id="kontakt">
+
+<div class="contact">
+
+<h2>Chcesz dołączyć do rodziny FC Sużym?</h2>
+
+<p>Skontaktuj się z nami i zostań częścią naszej historii.</p>
+
+<a href="https://www.instagram.com/fc_suzym/" target="_blank">
+Skontaktuj się
+</a>
+
+</div>
+
+</section>
+
+<footer>
+© 2025 FC SUŻYM — Łączy nas sużym
+</footer>
+
+</body>
+</html>
